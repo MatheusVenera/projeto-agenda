@@ -10,21 +10,23 @@
       <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
       <hr>
 
+      <%- include('includes/messages') %>
+
       <div class="row">
         <div class="col-lg ">
           <h4>Faça seu cadastro</h4>
           <form action="/login/register" method="post">
             <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             <div class="form-group">
-              <label for="inputEmailCadastro">Email</label>
-              <input name="inputEmailCadastro" type="email" class="form-control" id="inputEmailCadastro" aria-describedby="emailHelp" placeholder="Digite aqui seu e-mail...">
+              <label for="email">Email</label>
+              <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Digite aqui seu e-mail...">
               <small id="emailHelp" class="form-text text-muted">Seu e-mail não será compartilhado com ninguém</small>
             </div>
             <div class="form-group">
-              <label for="inputSenhaCadastro">Senha</label>
-              <input name="inputSenhaCadastro" type="password" class="form-control" id="inputSenhaCadastro" placeholder="Digite aqui sua senha...">
+              <label for="senha">Senha</label>
+              <input name="senha" type="password" class="form-control" placeholder="Digite aqui sua senha...">
             </div>
-            <button name="btnCadastrarConta" id="btnCadastrarConta" type="submit" class="btn btn-secondary">Cadastrar conta</button>
+            <button type="submit" class="btn btn-secondary">Cadastrar conta</button>
           </form>
         </div>
 
@@ -34,15 +36,15 @@
           <form action="/login/login" method="post">
             <input type="hidden" name="_csrf" value=<%= csrfToken %>>
             <div class="form-group">
-              <label for="inputEmailLogin">Email</label>
-              <input name="inputEmailLogin" type="email" class="form-control" id="inputEmailLogin" aria-describedby="emailHelpPassword" placeholder="Digite aqui seu e-mail...">
+              <label for="email">Email</label>
+              <input name="email" type="email" class="form-control" aria-describedby="emailHelpPassword" placeholder="Digite aqui seu e-mail...">
               <small id="emailHelpPassword" class="form-text text-muted">Seu e-mail não será compartilhado com ninguém</small>
             </div>
             <div class="form-group">
-              <label for="inputSenhaLogin">Senha</label>
-              <input name="inputSenhaLogin" type="password" class="form-control" id="inputSenhaLogin" placeholder="Digite aqui sua senha...">
+              <label for="senha">Senha</label>
+              <input name="senha" type="password" class="form-control" placeholder="Digite aqui sua senha...">
             </div>
-            <button name="btnFazerLogin" id="btnFazerLogin" type="submit" class="btn btn-secondary">Fazer login</button>
+            <button type="submit" class="btn btn-secondary">Fazer login</button>
           </form>
         </div>
       </div>
