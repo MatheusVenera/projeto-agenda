@@ -2,24 +2,39 @@
 <%- include('includes/nav') %>
 
 <div class="container">
+  <%- include('includes/messages') %>
   <div class="row">
     <div class="col-lg-2"></div>
 
     <div class="col-lg-8 my-3">
       <h1 class="text-center">Agenda</h1>
-      <p class="text-center lead">Seus contatos estão abaixo</p>
-
+      <% if (!user) { %>
+      <p class="text-center lead">Uma lista completa com todos os seus contatos!</p>
+      <% } else { %>
+        <p class="text-center lead">Seus contatos estão abaixo</p>
+      <% } %>
       <div class="responsive-table">
         <table class="table my-3">
+          <% if (!user) { %>
           <tr>
-            <td>Matheus</td>
-            <td>Venera</td>
-            <td>(47) 98472-3702</td>
-            <td>matheusogliarivenera@gmail.com</td>
+            <td>Nome</td>
+            <td>Sobrenome</td>
+            <td>(xx) xxxxx-xxxx</td>
+            <td><a href="mailto:email@email.com">email@email.com</td>
           </tr>
+          <tr>
+            <td>Nome</td>
+            <td>Sobrenome</td>
+            <td>(xx) xxxxx-xxxx</td>
+            <td><a href="mailto:email@email.com">email@email.com</td>
+          </tr>
+          <% } %>
         </table>
       </div>
-
+      <hr>
+      <% if (!user) { %>
+      <a href="/login" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Criar conta</a>
+      <% } %>
     </div>
 
     <div class="col-lg-2"></div>
