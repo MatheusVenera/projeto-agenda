@@ -9,34 +9,46 @@
     <div class="col-lg-8 my-3">
       <h1 class="text-center">Agenda</h1>
       <% if (!user) { %>
-      <p class="text-center lead">Uma lista completa com todos os seus contatos!</p>
+        <p class="text-center lead">Uma lista completa com todos os seus contatos!</p>
+        <div class="responsive-table">
+          <table class="table my-3">
+            <tr>
+              <td>Nome</td>
+              <td>Sobrenome</td>
+              <td>(xx) xxxxx-xxxx</td>
+              <td><a href="mailto:email@email.com">email@email.com</td>
+            </tr>
+            <tr>
+              <td>Nome</td>
+              <td>Sobrenome</td>
+              <td>(xx) xxxxx-xxxx</td>
+              <td><a href="mailto:email@email.com">email@email.com</td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+        <a href="/login" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Criar conta</a>
       <% } else { %>
         <p class="text-center lead">Seus contatos estão abaixo</p>
-      <% } %>
-      <div class="responsive-table">
-        <table class="table my-3">
-          <% if (!user) { %>
-          <tr>
-            <td>Nome</td>
-            <td>Sobrenome</td>
-            <td>(xx) xxxxx-xxxx</td>
-            <td><a href="mailto:email@email.com">email@email.com</td>
-          </tr>
-          <tr>
-            <td>Nome</td>
-            <td>Sobrenome</td>
-            <td>(xx) xxxxx-xxxx</td>
-            <td><a href="mailto:email@email.com">email@email.com</td>
-          </tr>
-          <% } %>
-        </table>
-      </div>
-      <hr>
-      <% if (!user) { %>
-      <a href="/login" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Criar conta</a>
+        <div class="responsive-table">
+          <table class="table my-3">
+            <% contatos.forEach(contato => { %>
+              <tr>
+                <td><%=contato.nome%></td>
+                <td><%=contato.sobrenome%></td>
+                <td><%=contato.telefone%></td>
+                <td><a href="mailto:<%=contato.email%>"> <%=contato.email%> </td>
+                <td><a class="btn btn-primary btn-sm" href="/contato/index/<%=contato._id%>">Editar</td>
+                <td><a class="btn btn-danger btn-sm" href="/contato/delete/<%=contato._id%>">Excluir</td>
+              </tr>
+            <% }) %>
+          </table>
+        </div>
+        <hr>
+        <a href="/contato/index" class="btn btn-secondary btn-lg btn-block" role="button" aria-pressed="true">Novo contato</a>
       <% } %>
     </div>
-
+    </div>
     <div class="col-lg-2"></div>
   </div>
 </div>

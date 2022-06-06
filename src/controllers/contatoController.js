@@ -57,3 +57,19 @@ exports.edit = async function(req, resp, next) {
         return resp.render('error');
     }
 }
+
+exports.delete = async function(req, resp, next) {
+    try {
+        if(!req.params.id) return resp.render('error');
+
+        const contato = await Contato.delete(req.params.id);
+        if(!contato) return resp.render('error');
+
+        req.flash('success', 'Contato apagado com sucesso');
+        req.session.save(() => resp.redirect(`/`))
+        return;
+    } catch (error) {
+        console.error(error);
+        return resp.render('error');
+    }
+};
