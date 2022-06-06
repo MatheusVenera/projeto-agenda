@@ -9,8 +9,11 @@
     <div class="col-lg-8 my-3">
       <h1 class="text-center">Contato</h1>
       <p class="text-center lead">Crie ou edite seu contato abaixo</p>
-
-      <form action="/contato/register" method="post">
+      <% if(contato._id) { %>
+        <form action="/contato/edit/<%=contato._id %>" method="POST">
+          <% } else { %>
+            <form action="/contato/register" method="post">
+        <% } %>
         <input type="hidden" name="_csrf" value=<%= csrfToken %>>
         <div class="form-group">
           <label for="senha">Nome</label>
@@ -28,7 +31,11 @@
           <label for="senha">Telefone</label>
           <input value="<%= contato.telefone %>" name="telefone" type="tel" class="form-control" placeholder="Digite aqui o telefone do contato...">
         </div>
-        <button type="submit" class="btn btn-secondary">Cadastrar contato</button>
+        <% if(contato._id) { %>
+          <button type="submit" class="btn btn-secondary">Editar contato</button>
+            <% } else { %>
+              <button type="submit" class="btn btn-secondary">Cadastrar contato</button>
+          <% } %>
       </form>
 
     <div class="col-lg-2"></div>
